@@ -11,6 +11,7 @@ ISS_LONG, ISS_LAT = 0, 0
 sunset_time = []
 current_hour = 0
 current_minute = 0
+CHECK_AFTER_SECONDS = 60
 SENDER_MAIL = os.environ.get('SENDER_MAIL')
 PASSWORD = os.environ.get('PASSWORD')
 RECEIVER_MAIl = os.environ['RECEIVER_MAIL']
@@ -69,7 +70,7 @@ def start():
     while True:
         print(f"ISS CURRENT LOCATION: LAT: {ISS_LAT} , LON: {ISS_LONG}", end=" ---- ")
         iss_overhead()
-        time.sleep(60)
+        time.sleep(CHECK_AFTER_SECONDS)
         if not iss_location_func():
             return
 
